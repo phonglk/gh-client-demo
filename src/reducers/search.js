@@ -1,7 +1,39 @@
+import { SEARCH } from '../actions/index';
+
 export default function search(state = {
-  result: [],
+  result: null,
+  currentPage: 1,
   searchTerm: '',
+  error: '',
+  totalCount: 0,
   isSearching: false,
 }, action) {
-  return state;
+  switch (action.type) {
+    case SEARCH.REQUEST: {
+      return {
+        ...state,
+        searchTerm: action.query,
+        isSearching: true,
+      }
+    }
+    case SEARCH.SUCCESS: {
+      return {
+        ...state,
+        result: action.items,
+        totalCount: action.totalCount,
+        isSearching: false,
+        error: '',
+      }
+    }
+    case SEARCH.FAILURE: {
+      return {
+        ...state,
+        result: [],
+        totalCount: 0,
+        isSearching: false,
+        error: action.error,
+      }
+    }
+    default: return state;
+  }
 }

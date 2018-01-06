@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import SearchInput from '../containers/SearchInput';
+import SearchResult from '../containers/SearchResult';
+import SearchNavigation from '../containers/SearchNavigation';
 
 class PageSearch extends PureComponent {
   state = {
@@ -21,6 +23,8 @@ class PageSearch extends PureComponent {
         <h1>Search</h1>
         <div>
           <SearchInput />
+          <SearchResult />
+          <SearchNavigation />
         </div>
       </div>
     )

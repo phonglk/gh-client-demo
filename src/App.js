@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import PageSearch from './components/PageSearch';
-import PageProfile from './components/PageProfile';
+import PageProfile from './containers/PageProfile';
 
 class App extends Component {
   render() {
