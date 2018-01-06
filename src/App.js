@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import PageSearch from './components/PageSearch';
+import PageSearch from './containers/PageSearch';
 import PageProfile from './containers/PageProfile';
 
 class App extends Component {

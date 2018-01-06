@@ -22,11 +22,11 @@ export const PROFILE = createRequestTypes('PROFILE');
 const action = (type, payload = {}) => ({ type, ...payload });
 
 // search page actions
-export const searchRequest = (query, page) => async (dispatch, getStore) => {
+export const searchRequest = (query, page = 1) => async (dispatch, getStore) => {
   if (typeof query === 'undefined' && page) {
     query = getStore().search.query;
   }
-  dispatch(action(SEARCH[REQUEST], { query }));
+  dispatch(action(SEARCH[REQUEST], { query, page }));
   try {
     const { total_count: totalCount, items } = await search(query, page);
     dispatch(action(SEARCH[SUCCESS], { totalCount, items }));

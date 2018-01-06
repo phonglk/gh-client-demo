@@ -14,6 +14,7 @@ export default function search(state = {
         ...state,
         query: action.query,
         isSearching: true,
+        currentPage: action.page
       }
     }
     case SEARCH.SUCCESS: {

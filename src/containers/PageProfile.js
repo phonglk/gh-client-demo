@@ -28,7 +28,11 @@ class ConPageProfile extends PageProfile {
 }
 
 export default connect((state) => {
-  return state.profile; 
+  const { query, currentPage } = state.search;
+  return { 
+    ...state.profile,
+    search: { query, page: currentPage },
+  }; 
 }, {
   profileRequest
 })(ConPageProfile)

@@ -3,11 +3,11 @@
 ##TODOS
 
 [x] Search
-[ ] Search Loader
+[X] Search Loader
 [x] List
-[ ] List Loader
+[X] List Loader
 [x] Profile
-[ ] Profile Loader
+[X] Profile Loader
 [ ] Responsive
 [ ] ServiceWorker
 [ ] Adv

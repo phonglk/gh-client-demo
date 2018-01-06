@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { parse, stringify } from 'qs';
 
 import { searchRequest } from '../actions/index';
 import Spinner from '../components/Spinner';
@@ -20,18 +19,10 @@ class SearchInput extends PureComponent {
     this.props.history.push(`/search?q=${query}`);
     return false;
   }
-  handlePropsChanging(props) {
-    const query = parse(props.location.search.slice(1)).q;
-    if (typeof query !== "undefined" && query !== this.props.query) {
-      this.setState({ query });
-      this.props.searchRequest(query);
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    this.handlePropsChanging(nextProps)
-  }
   componentWillMount() {
-    this.handlePropsChanging(this.props);
+    if (this.props.query != this.state.query) {
+      this.setState({ query: this.props.query });
+    }
   }
   componentDidMount() {
     setTimeout(() => {

@@ -1,37 +1,41 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import UserList from './UserList';
+import Spinner from './Spinner';
 
 const DisplayProfile = props => {
-  const { profile } = props;
+  const { profile, isLoading } = props;
   if (profile === null) return null;
   return (
     <div className="profile-info">
-      <div className="profile-info__basic">
-        <div className="profile-info__avatar">
-          <img src={profile.avatar_url} />
-        </div>
-        <div className="profile-info__basic-detail">
-          <div>
-            <i className="fa fa-github" /> <a href={profile.html_url} target="_blank">
-              {profile.html_url}
-            </a>
+      { isLoading
+      ? <Spinner />
+      : <div className="profile-info__basic">
+          <div className="profile-info__avatar">
+            <img src={profile.avatar_url} />
           </div>
-          <div><i className="fa fa-user" /> {profile.name}</div>
-          <div><i className="fa fa-location-arrow" /> {profile.location}</div>
-          {profile.company && <div><i className="fa fa-building-o" /> {profile.company}</div>}
+          <div className="profile-info__basic-detail">
+            <div>
+              <i className="fa fa-github" /> <a href={profile.html_url} target="_blank">
+                {profile.html_url}
+              </a>
+            </div>
+            <div><i className="fa fa-user" /> {profile.name}</div>
+            <div><i className="fa fa-location-arrow" /> {profile.location}</div>
+            {profile.company && <div><i className="fa fa-building-o" /> {profile.company}</div>}
+          </div>
         </div>
-      </div>
+      }
     </div>
   )
 }
 
 const RepoList = props => {
-  const { repos, username } = props;
+  const { repos, username, isLoading } = props;
 
   return (
     <div className="repo-list">
-      {repos === null ? <div>Loading ...</div> : (
+      {isLoading || repos === null ? <Spinner /> : (
         repos.length === 0 ? <div>There is no repository</div>
         : <ul>
             {repos.map(repo => {
@@ -57,13 +61,17 @@ const RepoList = props => {
 
 class PageProfile extends PureComponent {
   render () {
-    const { isLoading, username, profile, repos, following, followers } = this.props;
+    const { isLoading, username, profile, repos, following, followers, search } = this.props;
+    let searchLink = '/search';
+    if (search.query !== '') {
+      searchLink += `?q=${search.query}&page=${search.page}`
+    }
     return (
       <div className="page-profile">
-        <h1><Link to="/search" className="btn"><i className="fa fa-search" /></Link>Profile: {username}</h1>
+        <h1><Link to={searchLink} className="btn">{'<'} <i className="fa fa-search" /></Link>Profile: {username}</h1>
         <div className="profile-and-repos">
-          <DisplayProfile profile={profile} />
-          <RepoList repos={repos} username={username} />
+          <DisplayProfile profile={profile} isLoading={isLoading} />
+          <RepoList repos={repos} username={username} isLoading={isLoading} />
         </div>
         <div className="followers-and-following">
           <div className="profile-followers">

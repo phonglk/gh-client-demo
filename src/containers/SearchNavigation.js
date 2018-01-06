@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { changePageRequest } from '../actions';
 
@@ -7,23 +8,23 @@ const RESULT_PER_PAGE = 30;
 
 class SearchNavigation extends PureComponent {
   state = {}
-  handlePageChange = (page, e) => {
-    e.preventDefault();
-    this.props.changePageRequest(page);
-    return false;
-  }
+  // handlePageChange = (page, e) => {
+  //   e.preventDefault();
+  //   this.props.changePageRequest(page);
+  //   return false;
+  // }
   render () {
-    const { isSearching, result, totalCount, currentPage } = this.props;
+    const { isSearching, result, totalCount, currentPage, query } = this.props;
     if (totalCount <= 30) return null;
     const pagination = [];
     const pageCount = Math.ceil(totalCount / RESULT_PER_PAGE);
     const pageMax = Math.min(34, pageCount);
 
     if (currentPage > 1) {
-      pagination.push({ i: currentPage - 1, element: <i className="fa fa-backward " /> })
       if (currentPage > 2) {
         pagination.push({ i: 1, element: <i className="fa fa-step-backward" /> })
       }
+      pagination.push({ i: currentPage - 1, element: <i className="fa fa-backward " /> })
     }
 
     pagination.push({ i: currentPage })
@@ -49,7 +50,7 @@ class SearchNavigation extends PureComponent {
             <li className="search-navigation__item" key={page.i}>
               {page.i === currentPage 
                 ? <a href="javascript:void(0)" className="search-navigation__item-link search-navigation__item-link_current">{currentPage}</a>
-                : <a href="#" onClick={this.handlePageChange.bind(this, page.i)} className="search-navigation__item-link">{page.element}</a>
+                : <Link to={`/search?q=${query}&page=${page.i}`} className="search-navigation__item-link">{page.element}</Link>
               }
             </li>
           ))}
