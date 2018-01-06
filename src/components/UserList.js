@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Spinner from './Spinner';
 
 class UserList extends PureComponent {
   static propTypes = {
@@ -18,6 +19,7 @@ class UserList extends PureComponent {
 
   render () {
     const { isLoading, items, emptyMessage } = this.props;
+    if (isLoading) return <Spinner medium />;
     if (items === null) return null;
     return (
       <ul className="user-list">
@@ -40,6 +42,4 @@ class UserList extends PureComponent {
   }
 }
 
-export default connect((state) => {
-  return state.search; 
-})(UserList)
+export default UserList;

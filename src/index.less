@@ -7,8 +7,48 @@ div {
   box-sizing: border-box;
 }
 
+.app {
+  padding: 10px;
+}
+
+.page-profile {
+  > h1 {
+    > .btn {
+      padding: 2px 5px;
+      margin: 5px;
+      border: 1px solid #333;
+      color: #333;
+    }
+  }
+}
+
 .search-input {
-  
+  &__form {
+    display: flex;
+  }
+  &__textbox {
+    &-wrapper {
+      flex: 1 1 auto;
+      height: 25px;  
+      position: relative;
+      > .spinner {
+        position: absolute;
+        right: 1px;
+        top: 2px;
+      }
+    }
+    height: 25px;
+    width: 100%;  
+    line-height: 25px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  &__btn {
+    flex: 0 0 30px;
+    height: 25px;
+    line-height: 20px;
+    font-size: 16px; 
+  }
 }
 
 .search-result {
@@ -24,11 +64,15 @@ div {
     list-style: none;
     display: block;
     float: left;
-    padding: 2px 5px;
     margin: 0 1px;
     border: 1px solid #333;
     &-link {
       text-decoration: none;
+      padding: 2px 5px;
+      &_current {
+        background: #666;
+        color: white;
+      }
     }
   }
 }
@@ -46,16 +90,22 @@ div {
       display: flex;
       flex-direction: row;
       text-decoration: none;
+      color: #333;
+      transition: all 0.3s;
+      &:hover {
+        background: #eee;
+      }
     }
     &-thumbnail {
   
       &-image {
-        width: 60px;
-        height: 60px;
+        width: 30px;
+        height: 30px;
       }
     }
     &-username {
-  
+      line-height: 28px;
+      padding-left: 5px;
     }
   }
 }

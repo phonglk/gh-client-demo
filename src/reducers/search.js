@@ -3,7 +3,7 @@ import { SEARCH } from '../actions/index';
 export default function search(state = {
   result: null,
   currentPage: 1,
-  searchTerm: '',
+  query: '',
   error: '',
   totalCount: 0,
   isSearching: false,
@@ -12,7 +12,7 @@ export default function search(state = {
     case SEARCH.REQUEST: {
       return {
         ...state,
-        searchTerm: action.query,
+        query: action.query,
         isSearching: true,
       }
     }

@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import UserList from './UserList';
 
 const DisplayProfile = props => {
@@ -12,13 +13,13 @@ const DisplayProfile = props => {
         </div>
         <div className="profile-info__basic-detail">
           <div>
-            <a href={profile.html_url} target="_blank">
+            <i className="fa fa-github" /> <a href={profile.html_url} target="_blank">
               {profile.html_url}
             </a>
           </div>
-          <div>{profile.name}</div>
-          <div>{profile.location}</div>
-          <div>{profile.company}</div>
+          <div><i className="fa fa-user" /> {profile.name}</div>
+          <div><i className="fa fa-location-arrow" /> {profile.location}</div>
+          {profile.company && <div><i className="fa fa-building-o" /> {profile.company}</div>}
         </div>
       </div>
     </div>
@@ -58,8 +59,8 @@ class PageProfile extends PureComponent {
   render () {
     const { isLoading, username, profile, repos, following, followers } = this.props;
     return (
-      <div>
-        <h1>Profile: {username}</h1>
+      <div className="page-profile">
+        <h1><Link to="/search" className="btn"><i className="fa fa-search" /></Link>Profile: {username}</h1>
         <div className="profile-and-repos">
           <DisplayProfile profile={profile} />
           <RepoList repos={repos} username={username} />

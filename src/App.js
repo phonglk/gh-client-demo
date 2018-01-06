@@ -7,7 +7,7 @@ import PageProfile from './containers/PageProfile';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Router>
           <Switch>
             <Route path="/search" component={PageSearch} />

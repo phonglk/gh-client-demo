@@ -20,7 +20,7 @@ class PageSearch extends PureComponent {
   render () {
     return (
       <div>
-        <h1>Search</h1>
+        <h1>Search Github Profile</h1>
         <div>
           <SearchInput />
           <SearchResult />

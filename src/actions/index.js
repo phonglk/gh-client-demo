@@ -24,7 +24,7 @@ const action = (type, payload = {}) => ({ type, ...payload });
 // search page actions
 export const searchRequest = (query, page) => async (dispatch, getStore) => {
   if (typeof query === 'undefined' && page) {
-    query = getStore().search.searchTerm;
+    query = getStore().search.query;
   }
   dispatch(action(SEARCH[REQUEST], { query }));
   try {

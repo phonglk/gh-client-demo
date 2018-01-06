@@ -13,22 +13,46 @@ class SearchNavigation extends PureComponent {
     return false;
   }
   render () {
-    const { isSearching, result, totalCount } = this.props;
+    const { isSearching, result, totalCount, currentPage } = this.props;
     if (totalCount <= 30) return null;
     const pagination = [];
     const pageCount = Math.ceil(totalCount / RESULT_PER_PAGE);
     const pageMax = Math.min(34, pageCount);
-    for(let i = 1; i <= pageMax; i++) {
-      pagination.push(
-        <li className="search-navigation__item" key={i}>
-          <a href="#" onClick={this.handlePageChange.bind(this, i)} className="search-navigation__item-link">{i}</a>
-        </li>
-      )
+
+    if (currentPage > 1) {
+      pagination.push({ i: currentPage - 1, element: <i className="fa fa-backward " /> })
+      if (currentPage > 2) {
+        pagination.push({ i: 1, element: <i className="fa fa-step-backward" /> })
+      }
     }
+
+    pagination.push({ i: currentPage })
+
+    if (currentPage < pageMax) {
+      pagination.push({ i: currentPage + 1, element: <i className="fa fa-forward " /> })
+      if (currentPage < pageMax - 1) {
+        pagination.push({ i: pageMax, element: <i className="fa fa-step-forward " /> })
+      }
+    }
+
+    // for(let i = 1; i <= pageMax; i++) {
+    //   pagination.push(
+    //     <li className="search-navigation__item" key={i}>
+    //       <a href="#" onClick={this.handlePageChange.bind(this, i)} className="search-navigation__item-link">{i}</a>
+    //     </li>
+    //   )
+    // }
     return (
       <div className="search-navigation">
         <ul>
-          {pagination}
+          {pagination.map(page => (
+            <li className="search-navigation__item" key={page.i}>
+              {page.i === currentPage 
+                ? <a href="javascript:void(0)" className="search-navigation__item-link search-navigation__item-link_current">{currentPage}</a>
+                : <a href="#" onClick={this.handlePageChange.bind(this, page.i)} className="search-navigation__item-link">{page.element}</a>
+              }
+            </li>
+          ))}
         </ul>
       </div>
     )

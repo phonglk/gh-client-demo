@@ -11,7 +11,7 @@ class SearchResult extends PureComponent {
     return (
       <div className="search-result">
         <UserList
-          isLoadind={isSearching}
+          isLoading={isSearching}
           items={result}
           emptyMessage="There is no user match given search term"
         />
