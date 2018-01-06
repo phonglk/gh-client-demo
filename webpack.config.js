@@ -23,10 +23,14 @@ const config = {
   },
   output: {
     path: path.join(__dirname, 'dist', 'js'),
-    publicPath: '/',
+    publicPath: '/js/',
     filename: 'bundle.js'
   },
   plugins: [
+    new webpack.DllReferencePlugin({
+      context: '.',
+      manifest: require('./dist/js/' + 'common-manifest.json')
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)

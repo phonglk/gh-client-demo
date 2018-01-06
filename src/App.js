@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import PageSearch from './containers/PageSearch';
-import PageProfile from './containers/PageProfile';
+import Bundle from './components/Bundle';
+import loadPageSearch from 'bundle-loader?lazy!./containers/PageSearch';
+import loadPageProfile from 'bundle-loader?lazy!./containers/PageProfile';
+
+const PageSearch = (props) => (
+  <Bundle load={loadPageSearch}>
+    {(PageSearch) => <PageSearch {...props}/>}
+  </Bundle>
+)
+
+const PageProfile = (props) => (
+  <Bundle load={loadPageProfile}>
+    {(PageProfile) => <PageProfile {...props}/>}
+  </Bundle>
+)
 
 class App extends Component {
+  componentDidMount() {
+    // preloads the rest
+    loadPageSearch(() => {})
+    loadPageProfile(() => {})
+  }
+
   render() {
     return (
       <div className="app">

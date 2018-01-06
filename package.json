@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "bundle-loader": "^0.5.5",
     "express": "^4.16.2",
     "qs": "^6.5.1",
     "react": "^16.2.0",

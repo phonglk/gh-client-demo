@@ -10,6 +10,6 @@
 [X] Profile Loader
 [x] Responsive
 [ ] Adv
-[ ] Code Spliting
+[X] Code Spliting
 [ ] Server rendering
 [ ] ServiceWorker
