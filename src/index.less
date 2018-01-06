@@ -3,6 +3,10 @@ html, body {
   margin: 0;
 }
 
+div {
+  box-sizing: border-box;
+}
+
 .search-input {
   
 }
@@ -33,6 +37,8 @@ html, body {
 .user-list {
   margin: 0;
   padding: 0;
+  max-height: 300px;
+  overflow: auto;
   &__item {
     list-style: none;
     display: block;
@@ -51,5 +57,88 @@ html, body {
     &-username {
   
     }
+  }
+}
+
+
+.profile-and-repos {
+  display: flex;
+  > div {
+    margin: 0 5px;
+  }
+}
+
+.profile-info {
+  flex: 1;
+  &__basic {
+    display: flex;
+    border: 1px solid #333;
+    padding: 10px;
+    &-detail {
+      padding-left: 10px;
+      > div {
+        line-height: 20px;
+        font-size: 15px;
+      }
+    }
+  }
+  &__avatar {
+    > img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+.repo-list {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #333;
+  > ul {
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    max-height: 200px;
+  }
+
+  &__item {
+    list-style: none;
+    display: block;
+    height: 25px;
+    display: block;
+    > a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-name {
+      line-height: 25px;
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.followers-and-following {
+  margin-top: 10px;
+  display: flex;
+  > div {
+    margin: 0 5px;
+    border: 1px solid #333;
+    padding: 10px;
+    flex: 1;
+  }
+}
+.profile-followers,
+.profile-following {
+  h2 {
+    font-weight: bold;
+    font-size: 20px;
   }
 }
