@@ -38,6 +38,7 @@
   },
   "scripts": {
     "dev": "webpack --progress --colors --watch",
+    "dll": "webpack --progress --colors --config=dll.webpack.config.js",
     "build": "NODE_ENV='production' webpack -p --progress",
     "serve": "node server"
   }
