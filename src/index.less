@@ -30,25 +30,45 @@ div {
   &__textbox {
     &-wrapper {
       flex: 1 1 auto;
-      height: 25px;  
+      height: 50px;
+      @media (min-width: 600px) {
+        height: 25px;  
+      }
       position: relative;
       > .spinner {
         position: absolute;
-        right: 1px;
-        top: 2px;
+        right: 3px;
+        top: 15px;
+        @media (min-width: 600px) {
+          right: 1px;
+          top: 2px;
+        }
       }
     }
-    height: 25px;
+    @media (min-width: 600px) {
+      height: 25px;
+      line-height: 25px;
+      font-size: 16px;
+    }
+    height: 50px;
     width: 100%;  
-    line-height: 25px;
-    font-size: 16px;
+    line-height: 40px;
+    font-size: 30px;
     box-sizing: border-box;
+    border: 1px solid #333;
   }
   &__btn {
-    flex: 0 0 30px;
-    height: 25px;
-    line-height: 20px;
-    font-size: 16px; 
+    flex: 0 0 50px;
+    height: 50px;
+    line-height: 40px;
+    font-size: 25px; 
+    @media (min-width: 600px) {
+      flex: 0 0 30px;
+      height: 25px;
+      line-height: 20px;
+      font-size: 16px; 
+    }
+    border: 1px solid #333;
   }
 }
 
@@ -65,11 +85,20 @@ div {
     list-style: none;
     display: block;
     float: left;
-    margin: 0 1px;
+    margin: 0 5px;
+    @media (min-width: 600px) {
+      margin: 0 3px;
+    }
     border: 1px solid #333;
+    overflow: hidden;
     &-link {
       text-decoration: none;
-      padding: 2px 5px;
+      padding: 10px 10px;
+      font-size: 22px;
+      @media (min-width: 600px) {
+        padding: 5px 8px;
+        font-size: 18px;
+      }
       &_current {
         background: #666;
         color: white;
@@ -87,6 +116,8 @@ div {
   &__item {
     list-style: none;
     display: block;
+    border: 1px solid #666;
+    margin: 3px 0;
     &-container {
       display: flex;
       flex-direction: row;
@@ -100,12 +131,12 @@ div {
     &-thumbnail {
   
       &-image {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
       }
     }
     &-username {
-      line-height: 28px;
+      line-height: 35px;
       padding-left: 5px;
     }
   }
@@ -113,9 +144,12 @@ div {
 
 
 .profile-and-repos {
-  display: flex;
+  @media (min-width: 600px) {
+    display: flex;
+  }
   > div {
     margin: 0 5px;
+    margin-bottom: 5px;
   }
 }
 
@@ -123,6 +157,7 @@ div {
   flex: 1;
   border: 1px solid #333;
   padding: 10px;
+
   &__basic {
     display: flex;
     &-detail {
@@ -177,10 +212,14 @@ div {
 }
 
 .followers-and-following {
-  margin-top: 10px;
-  display: flex;
+  margin-top: 5px;
+  @media (min-width: 600px) {
+    display: flex;
+    margin-top: 10px;
+  }
   > div {
     margin: 0 5px;
+    margin-top: 5px;
     border: 1px solid #333;
     padding: 10px;
     flex: 1;

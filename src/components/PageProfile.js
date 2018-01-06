@@ -35,6 +35,7 @@ const RepoList = props => {
 
   return (
     <div className="repo-list">
+      <h2>Repositories</h2>
       {isLoading || repos === null ? <Spinner /> : (
         repos.length === 0 ? <div>There is no repository</div>
         : <ul>

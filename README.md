@@ -8,8 +8,8 @@
 [X] List Loader
 [x] Profile
 [X] Profile Loader
-[ ] Responsive
-[ ] ServiceWorker
+[x] Responsive
 [ ] Adv
 [ ] Code Spliting
 [ ] Server rendering
+[ ] ServiceWorker
