@@ -36,22 +36,22 @@ Browse to localhost:8080
 
 ## Backlog
 
-[x] Search
-[X] Search Loader
-[x] List
-[X] List Loader
-[x] Profile
-[X] Profile Loader
-[x] Responsive
-[x] Adv
-[X] Code Spliting
-[x] Load followers, following async
-[X] search suggestion
-[x] AWS Deploy
-[-] improvement: suggestion to search mode with out requesting
-[-] page transition
-[-] theming
-[-] Server rendering
-[-] SEO Optimised
-[-] ServiceWorker
+- [x] Search
+- [X] Search Loader
+- [x] List
+- [X] List Loader
+- [x] Profile
+- [X] Profile Loader
+- [x] Responsive
+- [x] Adv
+- [X] Code Spliting
+- [x] Load followers, following async
+- [X] search suggestion
+- [x] AWS Deploy
+- [-] improvement: suggestion to search mode with out requesting
+- [-] page transition
+- [-] theming
+- [-] Server rendering
+- [-] SEO Optimised
+- [-] ServiceWorker
 
