@@ -62,10 +62,14 @@ div {
     height: 50px;
     line-height: 40px;
     font-size: 25px; 
+    box-sizing: border-box;
+    text-align: center;
+    padding:0;
+    cursor: pointer;
     @media (min-width: 600px) {
       flex: 0 0 30px;
       height: 25px;
-      line-height: 20px;
+      line-height: 25px;
       font-size: 16px; 
     }
     border: 1px solid #333;
@@ -73,7 +77,9 @@ div {
 }
 
 .search-result {
-  
+  > h3 {
+    margin: 3px;
+  }
 }
 
 .search-navigation {
@@ -129,6 +135,9 @@ div {
       }
     }
     &-thumbnail {
+      width: 40px;
+      background-size: cover;
+      height: 40px;
   
       &-image {
         width: 40px;
@@ -136,8 +145,12 @@ div {
       }
     }
     &-username {
-      line-height: 35px;
+      line-height: 25px;
       padding-left: 5px;
+    }
+    &-extras {
+      line-height: 12px;
+      font-size: 12px;
     }
   }
 }

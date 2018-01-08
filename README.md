@@ -10,6 +10,7 @@ This application allows user to search github profiles by keywords. Then user ca
 - LESS
 - DLL for fast build and caching
 - Code Splitting per Page
+- Load Followers, Following of search result in async
 
 # Limitation
 
@@ -30,8 +31,10 @@ This application allows user to search github profiles by keywords. Then user ca
 `npm run production`
 ## Serve
 `npm run serve`
+## Open Browser
+Browse to localhost:8080
 
-##TODOS
+## Backlog
 
 [x] Search
 [X] Search Loader
@@ -40,7 +43,15 @@ This application allows user to search github profiles by keywords. Then user ca
 [x] Profile
 [X] Profile Loader
 [x] Responsive
-[ ] Adv
+[x] Adv
 [X] Code Spliting
-[ ] Server rendering
-[ ] ServiceWorker
+[x] Load followers, following async
+[X] search suggestion
+[x] AWS Deploy
+[-] improvement: suggestion to search mode with out requesting
+[-] page transition
+[-] theming
+[-] Server rendering
+[-] SEO Optimised
+[-] ServiceWorker
+

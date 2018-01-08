@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 const config = {
   entry: './src/index.js',
@@ -27,14 +28,19 @@ const config = {
     filename: 'bundle.js'
   },
   plugins: [
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: 'gh-client-demo',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: true,
+        navigateFallback: '/js/',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      }
+    ),
     new webpack.DllReferencePlugin({
       context: '.',
       manifest: require('./dist/js/' + 'common-manifest.json')
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-      }
     }),
   ],
 }

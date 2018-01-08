@@ -7,8 +7,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
+  <noscript>
+    This application requires javascript enabled browser
+  </noscript>
   <div id="root"></div>
   <script src="/js/common.dll.js"></script>
   <script src="/js/bundle.js"></script>
+  <script type="text/javascript">
+    (function(serviceWorkerFilename) {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register(serviceWorkerFilename)
+          .then(function() {
+            console.log('Service worker registered!');
+          })
+          .catch(function(error) {
+            console.log('Error registering service worker: ', error);
+          });
+      } else {
+        log('Not supported by browser');
+      }
+    })('/js/service-worker.js')
+  </script>
 </body>
 </html>

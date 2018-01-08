@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { parse, stringify } from 'qs';
 
 import PageSearch from '../components/PageSearch';
-import { searchRequest } from '../actions';
+import { searchRequest, checkFollowRequest } from '../actions';
 
 class ConPageSearch extends PageSearch {
   handlePropsChanging(props) {
@@ -11,12 +11,16 @@ class ConPageSearch extends PageSearch {
     const query = queryParams.q;
     const page = parseInt(queryParams.page || 1);
     if (typeof query !== "undefined" 
-      && (query !== this.props.query || page !== this.props.currentPage )) {
-      this.props.searchRequest(query, page);
+      && (query !== props.query || page !== props.currentPage )) {
+      props.searchRequest(query, page);
     }
+    if (props.followRequestQueue.length > 0 
+      && props.followRequestingId === null) {
+        props.checkFollowRequest(props.followRequestQueue[0]);
+      }
   }
-  componentWillReceiveProps(nextProps) {
-    this.handlePropsChanging(nextProps)
+  componentDidUpdate(prevProps) {
+    this.handlePropsChanging(this.props)
   }
   componentWillMount() {
     this.handlePropsChanging(this.props);
@@ -26,5 +30,6 @@ class ConPageSearch extends PageSearch {
 export default connect((state) => {
   return state.search; 
 }, {
-  searchRequest
+  searchRequest,
+  checkFollowRequest
 })(ConPageSearch)

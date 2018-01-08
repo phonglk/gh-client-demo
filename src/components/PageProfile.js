@@ -68,7 +68,7 @@ class PageProfile extends PureComponent {
       searchLink += `?q=${search.query}&page=${search.page}`
     }
     return (
-      <div className="page-profile">
+      <div className="page page-profile">
         <h1><Link to={searchLink} className="btn">{'<'} <i className="fa fa-search" /></Link>Profile: {username}</h1>
         <div className="profile-and-repos">
           <DisplayProfile profile={profile} isLoading={isLoading} />

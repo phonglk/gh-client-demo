@@ -9,7 +9,12 @@ class Bundle extends Component {
   }
 
   componentWillMount() {
+    console.log('BundleWillMount');
     this.load(this.props)
+  }
+
+  componentWillUnmount() {
+    console.log('BundleWillUnMount');
   }
 
   componentWillReceiveProps(nextProps) {

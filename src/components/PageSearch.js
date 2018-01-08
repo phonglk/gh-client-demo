@@ -6,7 +6,7 @@ import SearchNavigation from '../containers/SearchNavigation';
 class PageSearch extends PureComponent {
   render () {
     return (
-      <div>
+      <div className="page page-search">
         <h1>Search Github Profile</h1>
         <div>
           <SearchInput />

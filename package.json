@@ -6,11 +6,13 @@
     "babel-polyfill": "^6.26.0",
     "bundle-loader": "^0.5.5",
     "express": "^4.16.2",
+    "lodash": "^4.17.4",
     "qs": "^6.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
@@ -33,13 +35,15 @@
     "react-hot-loader": "^3.1.3",
     "react-scripts": "1.0.17",
     "style-loader": "^0.19.1",
+    "sw-precache-webpack-plugin": "^0.11.4",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
   },
   "scripts": {
     "dev": "webpack --progress --colors --watch",
-    "dll": "webpack --progress --colors --config=dll.webpack.config.js",
-    "build": "NODE_ENV='production' webpack -p --progress",
-    "serve": "node server"
+    "dll": "webpack -p --progress --colors --config=dll.webpack.config.js",
+    "build": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors",
+    "serve": "node server",
+    "start": "node server"
   }
 }

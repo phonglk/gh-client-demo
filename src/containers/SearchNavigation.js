@@ -14,7 +14,8 @@ class SearchNavigation extends PureComponent {
   //   return false;
   // }
   render () {
-    const { isSearching, result, totalCount, currentPage, query } = this.props;
+    const { isSearching, result, totalCount, currentPage, query, suggestionMode } = this.props;
+    
     if (totalCount <= 30) return null;
     const pagination = [];
     const pageCount = Math.ceil(totalCount / RESULT_PER_PAGE);
@@ -36,25 +37,20 @@ class SearchNavigation extends PureComponent {
       }
     }
 
-    // for(let i = 1; i <= pageMax; i++) {
-    //   pagination.push(
-    //     <li className="search-navigation__item" key={i}>
-    //       <a href="#" onClick={this.handlePageChange.bind(this, i)} className="search-navigation__item-link">{i}</a>
-    //     </li>
-    //   )
-    // }
     return (
       <div className="search-navigation">
+        { suggestionMode ? null :
         <ul>
           {pagination.map(page => (
             <li className="search-navigation__item" key={page.i}>
               {page.i === currentPage 
-                ? <a href="javascript:void(0)" className="search-navigation__item-link search-navigation__item-link_current">{currentPage}</a>
+                ? <a href="javascript:void(0)" className="search-navigation__item-link search-navigation__item-link_current">{currentPage} / {pageMax}</a>
                 : <Link to={`/search?q=${query}&page=${page.i}`} className="search-navigation__item-link">{page.element}</Link>
               }
             </li>
           ))}
         </ul>
+        }
       </div>
     )
   }

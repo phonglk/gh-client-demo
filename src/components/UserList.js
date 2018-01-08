@@ -18,7 +18,7 @@ class UserList extends PureComponent {
   }
 
   render () {
-    const { isLoading, items, emptyMessage } = this.props;
+    const { isLoading, items, emptyMessage, extras, extraLoadingUsername } = this.props;
     if (isLoading) return <Spinner medium />;
     if (items === null) return null;
     return (
@@ -29,10 +29,20 @@ class UserList extends PureComponent {
           return (
             <li key={id} className="user-list__item">
               <Link className="user-list__item-container" to={`/profile/${login}`}>
-                <div className="user-list__item-thumbnail">
-                  <img src={avatar_url} className="user-list__item-thumbnail-image"/>
+                <div className="user-list__item-thumbnail" style={{
+                  backgroundImage: `url(${avatar_url}`,
+                }}>
                 </div>
-                <div className="user-list__item-username">{login}</div>
+                <div className="user-list__item-username">
+                  <div>{login}</div>
+                  {extras && <div className="user-list__item-extras">
+                    {extraLoadingUsername === login && <Spinner xsmall />}
+                    {user.extras && <div>
+                      <strong>Followers</strong>: {user.extras.followers} &nbsp;
+                      <strong>Following</strong>: {user.extras.following}
+                    </div>}
+                  </div>}
+                </div>
               </Link>
             </li>
           )
