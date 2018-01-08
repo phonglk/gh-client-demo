@@ -23,13 +23,14 @@ This application allows user to search github profiles by keywords. Then user ca
 - Must build DLL for either development or production
 - Typical first development build: build dll && build dev && serve
 - Typical first production build: build dll && build production && serve
-
+## First Production build
+`npm run first-production-build`
 ## Build DLL
-`npm run dll`
+`npm run buil-dll`
 ## Development
 `npm run dev`
 ## Production build
-`npm run production`
+`npm run build-production`
 ## Serve
 `npm run serve`
 ## Open Browser

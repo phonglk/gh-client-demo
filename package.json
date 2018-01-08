@@ -41,9 +41,10 @@
   },
   "scripts": {
     "dev": "webpack --progress --colors --watch",
-    "dll": "webpack -p --progress --colors --config=dll.webpack.config.js",
-    "build": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors",
+    "build-dll": "webpack -p --progress --colors --config=dll.webpack.config.js",
+    "build-production": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors",
     "serve": "node server",
+    "first-production-build": "npm run build-dll && npm run build-production && npm run serve",
     "start": "node server"
   }
 }
