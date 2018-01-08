@@ -11,6 +11,7 @@ This application allows user to search github profiles by keywords. Then user ca
 - DLL for fast build and caching
 - Code Splitting per Page
 - Load Followers, Following of search result in async
+- Search Suggestion
 
 # Limitation
 
